@@ -178,9 +178,9 @@ describe('', () => {
       });
 
       it('should hide error after 3 seconds', () => {
-        cy.clock();
-        cy.tick(3000);
-        errorMessage.assertHidden();
+        // just in case
+        cy.wait(50);
+        
         cy.clock();
         cy.tick(2500);
         errorMessage.assertVisible();

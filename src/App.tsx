@@ -3,18 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import { Todo } from './types/Todo';
 import { getTodos } from './api/todos';
-import { AppHeader } from './app-header';
-import { Error } from './error';
-import { AppFooter } from './app-footer';
-import { ToDo } from './todo';
-
-enum Errors {
-  'errorLoad' = 'Unable to load todos',
-  'errorEmptyTitle' = 'Title should not be empty',
-  'errorAdd' = 'Unable to add a todo',
-  'errorDelete' = 'Unable to delete a todo',
-  'errorUpdate' = 'Unable to update a todo',
-}
+import { AppHeader } from './components/app-header';
+import { Error } from './components/error';
+import { AppFooter } from './components/app-footer';
+import { ToDo } from './components/todo';
+import { Errors } from './types/errors';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[] | null>(null);
@@ -47,7 +40,7 @@ export const App: React.FC = () => {
   return (
     <div className="todoapp">
       <h1 className="todoapp__title">todos</h1>
-      <AppHeader />
+      <AppHeader setError={setError} setTodos={setTodos} todos={todos || []} />
       <div className="todoapp__content">
         {!isLoading && (
           <section className="todoapp__main" data-cy="TodoList">

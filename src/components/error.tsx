@@ -5,7 +5,7 @@ export const Error = ({
   setError,
 }: {
   error: string | null;
-  setError: React.Dispatch<React.SetStateAction<string | null>>;
+  setError: (val: string | null) => void;
 }) => {
   useEffect(() => {
     if (!error) {
@@ -32,3 +32,5 @@ export const Error = ({
     </div>
   );
 };
+
+export default Error;

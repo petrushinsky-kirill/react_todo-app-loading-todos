@@ -1,10 +1,5 @@
-import { Todo } from './types/Todo';
-
-enum FilterKeys {
-  'all' = 'All',
-  'active' = 'Active',
-  'completed' = 'Completed',
-}
+import { FilterKeys } from '../types/filters';
+import { Todo } from '../types/Todo';
 
 export const AppFooter = ({
   todos,
@@ -33,7 +28,7 @@ export const AppFooter = ({
             key={value}
             href="#/"
             className={`filter__link ${filter === value ? 'selected' : ''}`}
-            data-cy="FilterLinkAll"
+            data-cy={`FilterLink${FilterKeys[value]}`}
             onClick={() => setFilter(value)}
           >
             {FilterKeys[value]}
